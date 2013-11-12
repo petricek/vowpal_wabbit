@@ -92,6 +92,11 @@ int main(int argc, char *argv[])
       cerr << endl << "total feature number = " << all->sd->total_features;
       if (all->active_simulation)
 	cerr << endl << "total queries = " << all->sd->queries << endl;
+      if (!all->holdout_set_off)
+      {
+        cerr << endl << "best pass = " << all->sd->holdout_best_pass;
+        cerr << endl << "best pass holdout loss = " << all->sd->holdout_best_loss;
+      }
       cerr << endl;
     }
   
