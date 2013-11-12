@@ -22,3 +22,5 @@ weighted label sum = 0
 average loss = 0.0475396
 best constant = 0
 total feature number = 240
+best pass = 37
+best pass holdout loss = 0.250022
