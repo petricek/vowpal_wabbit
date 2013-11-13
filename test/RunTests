@@ -297,13 +297,13 @@ sub diff_lenient_float($$) {
         while (<$sdiff>) {
             chomp;
             my ($line1, $line2) = split(/\s+\|\s+/, $_);
-            # print STDERR "line1: $line1\n";
-            # print STDERR "line2: $line2\n";
 
             # Break lines into tokens/words
             my (@w1) = split(' ', $line1);
             my (@w2) = split(' ', $line2);
             if (lenient_array_compare(\@w1, \@w2) != 0) {
+                print STDERR "line1: $line1\n";
+                print STDERR "line2: $line2\n";
                 $fuzzy_status = 1;
                 last;
             }
