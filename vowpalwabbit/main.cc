@@ -85,18 +85,21 @@ int main(int argc, char *argv[])
       }
       cerr << endl << "weighted example sum = " << all->sd->weighted_examples;
       cerr << endl << "weighted label sum = " << all->sd->weighted_labels;
-      cerr << endl << "average loss = " << all->sd->sum_loss / all->sd->weighted_examples;
+      if (all->holdout_set_off)
+      {
+        cerr << endl << "average loss = " << all->sd->sum_loss / all->sd->weighted_examples;
+      }
+      else
+      {
+        cerr << endl << "best pass = " << all->sd->holdout_best_pass;
+        cerr << endl << "best pass holdout loss = " << all->sd->holdout_best_loss;
+      }
       cerr << endl << "best constant = " << best_constant;
       if (all->sd->min_label == 0. && all->sd->max_label == 1. && best_constant < 1. && best_constant > 0.)
 	cerr << endl << "best constant's loss = " << constant_loss;
       cerr << endl << "total feature number = " << all->sd->total_features;
       if (all->active_simulation)
 	cerr << endl << "total queries = " << all->sd->queries << endl;
-      if (!all->holdout_set_off)
-      {
-        cerr << endl << "best pass = " << all->sd->holdout_best_pass;
-        cerr << endl << "best pass holdout loss = " << all->sd->holdout_best_loss;
-      }
       cerr << endl;
     }
   
